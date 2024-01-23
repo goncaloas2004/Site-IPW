@@ -1,0 +1,149 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/stylesheet.css" rel="stylesheet" />
+    <link href="/css/coments.css" rel="stylesheet" />
+    <link href="/css/classifica.css" rel="stylesheet" />
+    <link href="/css/layout.css" rel="stylesheet" />
+    <header>
+        <nav class="navbar">
+            <div class="logo"> 
+                <a href="../paginainicial.html">
+                    <img src="../../ASSETS/logo.png" alt="Logo">
+                </a>
+            </div>
+            <div class="titulo-header">
+                <a href="../paginainicial.html">
+                    <h2>Cozinha Fácil</h2>
+                </a>
+            </div>    
+                <div class="registro">
+                <a href="../Register.html">Registrar</a>
+                </div>
+            <div class="categorias">
+                <button class="categorias-btn">Categorias</button>
+                <div class="categorias-dropdown">
+                    <a href="#carne">Carne</a>
+                    <a href="#Peixe">Peixe</a>
+                    <a href="#Vegetariano">Vegetariano</a>
+                    <a href="#Sobremesas">Sobremesas</a>
+                </div>
+            </div>
+
+        </nav>
+    </header>
+</head>
+
+<body>
+
+    <div class="conteudo">
+        <h1 class="titulo-receita">Legumes Grelhados com Molho de Limão e Ervas</h1>
+        <div class="card">
+            <h1>INGREDIENTES</h1>
+            <ul>
+                <li>Abobrinha</li>
+                <li>Cogumelos</li>
+                <li>Pimentos coloridos</li>
+                <li>Sumo e raspas de 1 limão</li>
+                <li>2 colheres de sopa de azeite</li>
+                <li>2 colheres de chá de mel</li>
+                <li>2 dentes de alho picados</li>
+                <li>Ervas frescas a gosto (salsa, coentros)</li>
+                <li>Sal e pimenta a gosto</li>
+            </ul>
+            <a href="https://www.pingodoce.pt/" class="botao">Comprar ingredientes</a>
+        </div>
+        <div class="card">
+            <h1>MODO DE PREPARO</h1>
+            <ol>
+                <li>Corte os legumes em pedaços.</li>
+                <li>Tempere os legumes com sal, pimenta e alho.</li>
+                <li>Em uma tigela, misture o sumo de limão, as raspas de limão, azeite, mel e as ervas frescas picadas.</li>
+                <li>Reserve um pouco do molho para regar no final.</li>
+                <li>Grelhe os legumes por 5-7 minutos.</li>
+                <li>Regue os legumes com o molho reservado antes de retirar da grelha.</li>
+                <li>Decore com mais ervas frescas.</li>
+                <li>Sirva com acompanhamento a gosto.</li>
+            </ol>
+        </div>
+    </div>
+    <button type="button" id="toggleComments" onclick="toggleComments()">Mostrar/Esconder Comentário</button>
+    <form asp-action="SubmitComment" asp-controller="Home" method="post">
+        <label for="username">Seu Nome:</label>
+        <input type="text" id="username" name="Username" required>
+        <br>
+
+        <label for="comment">Seu Comentário:</label>
+        <textarea id="comment" name="CommentText" rows="4" cols="50" required></textarea>
+        <br>
+
+        <input type="submit" value="Enviar Comentário">
+
+        <!-- Comentários serão exibidos aqui -->
+        <div class="comments-container">
+            <h1>Comentários:</h1>
+                <div class="comment">
+                    @comment 
+                    <div class="heart-container">
+                        <input type="checkbox" id="likeCheckbox" name="likeCheckbox" onclick="toggleLike(this)">
+                        <label for="likeCheckbox">&#x2665;</label>
+                        <span class="like-count">0</span>
+                    </div>
+                        <label for="replyComment">Responder:</label>
+                        <textarea title="text" class="reply-comment" rows="2" cols="30"></textarea>
+                        <input type="submit" onclick="submitReply(this)" value="Enviar Comentário">
+                </div>
+                <div class="rating">
+                    <br />
+                    <h1>Avaliação</h1>
+                    <input type="radio" id="star5" name="rating" value="5"><label for="star5">☆</label>
+                    <input type="radio" id="star4" name="rating" value="4"><label for="star4">☆</label>
+                    <input type="radio" id="star3" name="rating" value="3"><label for="star3">☆</label>
+                    <input type="radio" id="star2" name="rating" value="2"><label for="star2">☆</label>
+                    <input type="radio" id="star1" name="rating" value="1"><label for="star1">☆</label>
+                </div>
+
+        </div>
+    </form>
+
+</body>
+</html>
+<!--scripts-->
+<script>
+    function toggleComments() {
+        var commentsContainer = document.querySelector('.comments-container');
+        commentsContainer.style.display = (commentsContainer.style.display === 'none' || commentsContainer.style.display === '') ? 'block' : 'none';
+    }
+</script>
+<script>
+    function toggleLike() {
+        
+        alert('Comentário curtido!');
+    }
+</script>
+<script>
+    var ratingInputs = document.querySelectorAll('input[name="rating"]');
+    var userRating;
+
+    ratingInputs.forEach(function (input) {
+        input.addEventListener('click', function () {
+            userRating = this.value;
+            alert('Avaliação: ' + userRating + ' estrela(s)');
+        });
+    });
+</script>
+<script>function toggleLike(likeCheckbox) {
+    var likeCountElement = likeCheckbox.parentElement.querySelector('.like-count');
+    var currentLikes = parseInt(likeCountElement.textContent);
+
+    if (likeCheckbox.checked) {
+        //aumenta o número de curtidas
+        currentLikes++;
+    } else {
+        //diminui o número de curtidas
+        currentLikes--;
+    }
+
+    // Atualize o número de curtidas 
+    likeCountElement.textContent = currentLikes;
+}</script>

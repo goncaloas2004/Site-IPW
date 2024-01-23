@@ -1,0 +1,125 @@
+html{
+    scroll-behavior: smooth;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+a{
+    text-decoration: none;  
+}
+
+header {
+    background-color: #f5f5dc;
+    padding: 10px 20px;
+    height: auto;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    max-width: 100px;
+    height: auto;
+}
+
+.titulo-header {
+    text-align: center;
+    padding: 10px;
+    /* font-family: 'Juice ITC' !important; */
+    font-size: 1.5em !important;
+}
+
+.titulo-header a{
+    color: #333;
+}
+
+.categorias {
+    position: relative;
+}
+
+.categorias-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 10px;
+    font-size: 20px;
+}
+
+.categorias-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 15px;
+    background-color: #333;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    border: 1px solid #666;
+    border-radius: 5px;
+    text-align: left;
+    white-space: nowrap;
+}
+
+.categorias-dropdown a {
+    display: block;
+    padding: 10px 0px;
+    text-decoration: none;
+    color: #f5f5dc;
+    transition: background-color 0.3s ease;
+}
+
+.categorias-dropdown a:hover {
+    background-color: #555;
+}
+
+.categorias:hover .categorias-dropdown {
+    display: block;
+}
+
+.categorias:hover .categorias-btn {
+    background-color: #555;
+    color: #f5f5dc;
+    border-radius: 5px 5px 0 0;
+}
+
+.registro {
+    margin-left: auto;
+    
+}
+
+
+.registro a {
+    color: black;
+    text-decoration: none;
+    padding: 10px 15px;
+    background-color: #f5f5dc;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    font-weight: bold;
+    padding: 10px;
+    font-size: 20px;
+}
+
+.registro a:hover {
+    background-color: #555;
+}
+
+#search{
+    width: 30%;
+    padding: 1rem;
+    outline: none;
+    border: 1px solid black;
+    border-radius: 25px;
+}

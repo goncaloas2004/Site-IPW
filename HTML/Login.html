@@ -1,0 +1,64 @@
+<head>
+    <title>Formulário de Login</title>
+    <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-firestore.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/login.css">
+
+
+</head>
+
+<body>
+    <div id="loginContainer">
+        <img src="/images/logo.png" alt="Logo" />
+        <h2>Login</h2>
+        <form id="loginForm">
+            <label for="emailInput">Email:</label>
+            <input type="email" id="emailInput" required><br>
+
+            <label for="passwordInput">Password:</label>
+            <input type="password" id="passwordInput" required><br>
+
+            <button type="submit">Login</button>
+        </form>
+    </div>
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyDVNksSjv30Pamyets_8yxvrBgLN49x6Sk",
+            authDomain: "coments-e0251.firebaseapp.com",
+            projectId: "coments-e0251",
+            storageBucket: "coments-e0251.appspot.com",
+            messagingSenderId: "286482989",
+            appId: "1:286482989:web:fb23efe7dbd48f10e60ea4"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+        
+        document.getElementById('loginForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            const email = document.getElementById('emailInput').value;
+            const password = document.getElementById('passwordInput').value;
+
+            firebase.auth().signInWithEmailAndPassword(email, password)
+                .then((userCredential) => {
+                    // Redirecionar após o login bem-sucedido para paginainicial.html
+                    window.location.href = 'paginainicial.html';
+                })
+                .catch((error) => {
+                    console.error('Erro ao fazer login com email e senha', error);
+                    alert(error.message);
+                });
+
+            firebase.auth().onAuthStateChanged((user) => {
+                if (user) {
+                    // Se o usuário estiver autenticado, redirecionar para paginainicial.html
+                    window.location.href = 'paginainicial.html';
+                } else {
+                    // Você pode adicionar lógica adicional aqui, se necessário
+                }
+            });
+        });
+    </script>
+</body>
+

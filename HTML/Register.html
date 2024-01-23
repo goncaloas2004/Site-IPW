@@ -1,0 +1,93 @@
+<head>
+    <title>Formulário de Registar</title>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore-compat.js"></script>
+    <link href="../CSS/register.css" rel="stylesheet">
+</head>
+<body>
+
+    <div id="formContainer">
+        <img src="../ASSETS/logo.png" alt="Logo" />
+        <h2>Register</h2>
+        <form id="registrationForm">
+            <label for="nameInput">Name:</label>
+            <input type="text" id="nameInput" required>
+        
+            <label for="emailInput">Email:</label>
+            <input type="email" id="emailInput" required>
+        
+            <label for="passwordInput">Password:</label>
+            <input type="password" id="passwordInput" required>
+
+            <!-- Adicione mais campos do formulário, se necessário -->
+
+            <a href="/htmlinicial/pagina-inicial.html">
+                <button type="submit">Registar</button>
+              </a>
+        </form>
+    </div>
+
+<!--ligação à DB e submissão de dados-->
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyDVNksSjv30Pamyets_8yxvrBgLN49x6Sk",
+            authDomain: "coments-e0251.firebaseapp.com",
+            projectId: "coments-e0251",
+            storageBucket: "coments-e0251.appspot.com",
+            messagingSenderId: "286482989",
+            appId: "1:286482989:web:fb23efe7dbd48f10e60ea4"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+
+        document.getElementById('registrationForm').addEventListener('submit', async function (event) {
+            event.preventDefault(); 
+        
+            var name = document.getElementById('nameInput').value;
+            var email = document.getElementById('emailInput').value;
+            var password = document.getElementById('passwordInput').value;
+        
+            // Validar se todos os campos estão preenchidos
+            if (!name || !email || !password) {
+                alert('Por favor, preencha todos os campos.');
+                return; // Retorna para evitar a execução adicional do código
+            }
+        
+            // Validar o formato do e-mail
+            if (!isValidEmail(email)) {
+                alert('Por favor, insira um e-mail válido.');
+                return; // Retorna para evitar a execução adicional do código
+            }
+        
+            // Validar o tamanho da passe
+            if (password.length < 8) {
+                alert('A senha deve ter pelo menos 8 caracteres.');
+                return; // Retorna para evitar a execução adicional do código
+            }
+        
+            try {
+                const docRef = await db.collection('users').add({
+                    name: name,
+                    email: email,
+                    password: password,
+                });
+        
+                console.log('User data written with ID: ', docRef.id);
+                alert('Registrado com sucesso!');
+                window.location.href = '/htmlinicial/paginaInicial.html';
+            } catch (error) {
+                console.error('Error adding user data: ', error);
+            }
+        });
+    
+
+        const app = firebase.initializeApp(firebaseConfig);  
+        
+        function isValidEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    }
+    </script>
+ 
+</body>

@@ -1,0 +1,56 @@
+#receitas{
+    width: calc(100% - 4rem);
+    min-height: calc(100lvh - 2rem);
+    padding: 0rem 2rem 2rem 2rem;
+}
+
+.pratos {
+    width: 100%;
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fill, minmax(28rem, 1fr));
+}
+
+.pratos h1{
+    grid-column: span 3;
+}
+
+#peixe, #vegetariano, #sobremesas{
+    margin-top: 5rem;
+}
+
+.column {
+    /* width: calc(100% - 2rem); */
+    padding: 1rem;
+    border: 1px solid #ccc; /* Adiciona uma borda para destacar as colunas */
+    background-color: #ccc;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 5px 5px 0px #5c5c5c;
+}
+
+.column h3{
+    color: black;
+}
+
+.column p{
+    text-align: center;
+    color: black;
+}
+
+/* Estilo para a imagem dentro da coluna */
+.column img {
+    width: 100%; /* A imagem ocupa 100% da largura da coluna */
+    height: 18rem;
+    border-radius: 25px;
+    margin: .8rem 0rem;
+}
+
+.custom-link.nav-link {
+    color: black !important;
+    text-decoration: none;
+}
+
+

@@ -1,0 +1,23 @@
+body {
+    background-size: cover; /* Ajusta o tamanho da imagem para cobrir toda a tela */
+    background-repeat: no-repeat; /* Evita a repetição da imagem */
+    background-image: url('../ASSETS/fundinho01.jpg');
+    background-attachment: fixed; /* Mantém a imagem fixa enquanto rola a página */
+    margin: 0; /* Remove margens padrão do body */
+    padding: 0; /* Remove padding padrão do body */
+    backdrop-filter: blur(2px);
+}
+h1 {
+    text-align: center;
+    font-weight: 400;
+    font-size: 50px;
+    /* font-family: 'Juice ITC' !important; */
+    color: #d2b48c; /* Beige color */
+    margin: 20px 0px 20px 0px;
+}
+h3 {
+    color: #d2b48c; 
+}
+p {
+    color: #d2b48c; 
+}
