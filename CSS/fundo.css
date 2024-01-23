@@ -1,5 +1,4 @@
 body {
-    background-color: black;
     background-size: cover; /* Ajusta o tamanho da imagem para cobrir toda a tela */
     background-repeat: no-repeat; /* Evita a repetição da imagem */
     background-image: url('../ASSETS/fundinho01.jpg');
